@@ -6,11 +6,16 @@
 }:
 let
 
-  src = lib.cleanSourceWith {
-    filter = name: type:
-      ! (type == "directory" && name == ".github")
+  src = let fs = lib.fileset; root = ../.; in fs.toSource {
+    inherit root;
+    fileset = fs.intersection
+      (fs.fromSource
+        (lib.cleanSourceWith {
+          filter = lib.cleanSourceFilter;
+          src = lib.cleanSource ../.;
+        }))
+      (fs.fileFilter (f: f.name != ".github") root)
     ;
-    src = lib.cleanSource ../.;
   };
 
   pg_suffix = lib.pipe libpg_query.version [
