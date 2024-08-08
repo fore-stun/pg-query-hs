@@ -1,1 +1,1 @@
-(import ./default.nix {}).env
+(import ./nix/flake-compat.nix).shellNix
