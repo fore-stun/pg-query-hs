@@ -1,0 +1,157 @@
+{
+  "nodes": {
+    "crane": {
+      "inputs": {
+        "nixpkgs": [
+          "forestun",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1710886643,
+        "narHash": "sha256-saTZuv9YeZ9COHPuj8oedGdUwJZcbQ3vyRqe7NVJMsQ=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "5bace74e9a65165c918205cf67ad3977fe79c584",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1701680307,
+        "narHash": "sha256-kAuep2h5ajznlPMD9rnQyffWG8EM/C73lejGofXvdM8=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "4022d587cbbfd70fe950c1e2083a02621806a725",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "forestun": {
+      "inputs": {
+        "crane": "crane",
+        "flake-utils": "flake-utils",
+        "gomod2nix": "gomod2nix",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust": "rust"
+      },
+      "locked": {
+        "lastModified": 1722719576,
+        "narHash": "sha256-PbZHegfqZgdnwpCZPhhJPLSUYBpdHVCXYtqgBLexdzo=",
+        "owner": "fore-stun",
+        "repo": "flakes",
+        "rev": "a2b9047b229d3538901dd1bdad2ecc5de49d0ebf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fore-stun",
+        "repo": "flakes",
+        "type": "github"
+      }
+    },
+    "gomod2nix": {
+      "inputs": {
+        "flake-utils": [
+          "forestun",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "forestun",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1698345661,
+        "narHash": "sha256-aHdDJ/2R4mk4BeJ03W4OV94Op8PVYvfjSyQucl0W9DQ=",
+        "owner": "fore-stun",
+        "repo": "gomod2nix",
+        "rev": "1340c2a983bfde3bf4417e44f4b69e7e354b3642",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fore-stun",
+        "ref": "fix-recursive-symlinker",
+        "repo": "gomod2nix",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1722813957,
+        "narHash": "sha256-IAoYyYnED7P8zrBFMnmp7ydaJfwTnwcnqxUElC1I26Y=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cb9a96f23c491c081b38eab96d22fa958043c9fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "forestun": "forestun",
+        "nixpkgs": "nixpkgs"
+      }
+    },
+    "rust": {
+      "inputs": {
+        "flake-utils": [
+          "forestun",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "forestun",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1702261031,
+        "narHash": "sha256-FUsBGXDJapq88XH1+3xfeeZS6cwKnScPkhGMzHn0Dgo=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "d3c43c05ef3cd66ddab4a5a82a7df71e40496aa5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
