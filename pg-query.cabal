@@ -40,6 +40,8 @@ library
     Postgres.Query.Parse.Internal
   build-depends:
     base < 5
+  build-tool-depends:
+    hsc2hs:hsc2hs
   extra-libraries:
     pg_query
   if flag(default_paths)
