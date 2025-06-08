@@ -24,7 +24,9 @@
         packages.${system} = {
           default = self.packages.${system}.pg_query;
           pg_query = pkgs.callPackage ./nix/pg_query.nix { };
-          devShell = self.packages.${system}.pg_query.env;
+          devShell = pkgs.callPackage ./nix/shell.nix {
+            inherit (self.packages."${system}") pg_query;
+          };
         };
         devShells.${system}.default = self.packages.${system}.devShell;
       }
