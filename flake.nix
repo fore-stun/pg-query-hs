@@ -23,7 +23,10 @@
       {
         packages.${system} = {
           default = self.packages.${system}.pg_query;
-          pg_query = pkgs.callPackage ./nix/pg_query.nix { };
+          libpg_query = pkgs.callPackage ./nix/libpg_query.nix { };
+          pg_query = pkgs.callPackage ./nix/pg_query.nix {
+            inherit (self.packages."${system}") libpg_query;
+          };
           devShell = pkgs.callPackage ./nix/shell.nix {
             inherit (self.packages."${system}") pg_query;
           };

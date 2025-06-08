@@ -18,29 +18,13 @@ let
     ;
   };
 
-  pg_suffix = lib.pipe libpg_query.version [
-    builtins.splitVersion
-    (lib.take 3)
-    (x: [
-      (lib.pipe x [
-        lib.init
-        (lib.concatMapStrings (lib.fixedWidthNumber 2))
-      ])
-      (lib.last x)
-    ])
-    (builtins.concatStringsSep ".")
-  ];
+  pg_suffix = libpg_query.passthru.pg_suffix;
 
   pgQuery =
     let
       inherit (haskell.lib) compose;
 
       overrider = old: {
-        preBuild = old.preBuild or "" + (if hostPlatform.isLinux then ''
-          ln -sv "${libpg_query}/lib/libpg_query.so" "libpg_query.so.${pg_suffix}"
-        '' else ''
-          ln -sv "${libpg_query}/lib/libpg_query.dylib" "libpg_query.${pg_suffix}.dylib"
-        '');
         postFixup = old.postFixup or "" + (if hostPlatform.isLinux then ''
           patchelf \
             --replace-needed "libpg_query.so.${pg_suffix}" "${libpg_query}/lib/libpg_query.so" \
@@ -56,7 +40,8 @@ let
     in
     lib.flip lib.pipe [
       (compose.disableCabalFlag "default_paths")
-      (compose.appendConfigureFlag "--extra-lib-dirs=.")
+      (compose.appendConfigureFlag "--extra-lib-dirs=${libpg_query}/lib")
+      (compose.appendConfigureFlag "--extra-include-dirs=${libpg_query}/include")
       (drv: drv.overrideAttrs overrider)
     ]
       (haskellPackages.callCabal2nix "pg-query" src { pg_query = libpg_query; });
