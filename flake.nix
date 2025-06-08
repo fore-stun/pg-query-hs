@@ -28,7 +28,7 @@
             inherit (self.packages."${system}") libpg_query;
           };
           devShell = pkgs.callPackage ./nix/shell.nix {
-            inherit (self.packages."${system}") pg_query;
+            inherit (self.packages."${system}") libpg_query pg_query;
           };
         };
         devShells.${system}.default = self.packages.${system}.devShell;
