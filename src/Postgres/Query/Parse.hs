@@ -1,12 +1,12 @@
-module Postgres.Query.Parse
-  ( PgQueryError(..)
-  , PgQueryParseResult(..)
-  , parseSQL
-  ) where
+module Postgres.Query.Parse (
+  PgQueryError (..),
+  PgQueryParseResult (..),
+  parseSQL,
+) where
 
-import Postgres.Query.Parse.Internal
-  ( PgQueryError(..)
-  , PgQueryParseResult(..)
-  , parseSQL
-  )
+import Postgres.Query.Parse.Internal (
+  PgQueryError (..),
+  PgQueryParseResult (..),
+  parseSQL,
+ )
 

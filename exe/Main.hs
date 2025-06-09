@@ -1,11 +1,12 @@
 {-# LANGUAGE TypeApplications #-}
+
 module Main where
 
-import           Data.Aeson (decode, Value)
-import           Data.Aeson.Encode.Pretty (encodePretty)
+import Data.Aeson (Value, decode)
+import Data.Aeson.Encode.Pretty (encodePretty)
 import qualified Data.ByteString.Lazy.Char8 as B8
-import           Postgres.Query.Parse (parseSQL, parse_tree)
-import           System.Environment (getArgs)
+import Postgres.Query.Parse (parseSQL, parse_tree)
+import System.Environment (getArgs)
 
 main :: IO ()
 main = do

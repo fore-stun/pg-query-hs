@@ -1,5 +1,6 @@
+{-# LANGUAGE ForeignFunctionInterface #-}
 {-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE ForeignFunctionInterface  #-}
+
 module Postgres.Query.Parse.Internal where
 
 import Control.Monad
@@ -24,19 +25,21 @@ instance Storable PgQueryError where
   poke _ _ = fail "PgQueryParseResult poke: not implemented"
 
 data PgQueryError = PgQueryError
-  { message   ::  !String
-  , funcname  ::  !String
-  , filename  ::  !String
-  , lineno    ::  !Int
-  , cursorpos ::  !Int
-  , context   ::  !String
-  } deriving (Show, Eq)
+  { message :: !String,
+    funcname :: !String,
+    filename :: !String,
+    lineno :: !Int,
+    cursorpos :: !Int,
+    context :: !String
+  }
+  deriving (Show, Eq)
 
 data PgQueryParseResult = PgQueryParseResult
-  { parse_tree    ::  !String
-  , stderr_buffer ::  !String
-  , error         ::  !(Maybe PgQueryError)
-  } deriving (Show, Eq)
+  { parse_tree :: !String,
+    stderr_buffer :: !String,
+    error :: !(Maybe PgQueryError)
+  }
+  deriving (Show, Eq)
 
 instance Storable PgQueryParseResult where
   sizeOf _ = #{size PgQueryParseResult}
@@ -53,8 +56,9 @@ instance Storable PgQueryParseResult where
   poke _ _ = fail "PgQueryParseResult poke: not implemented"
 
 getCString :: CString -> IO String
-getCString ptr | nullPtr == ptr = pure mempty
-               | otherwise = peekCString ptr
+getCString ptr
+  | nullPtr == ptr = pure mempty
+  | otherwise = peekCString ptr
 
 foreign import ccall "get_sql" get_sql :: CString -> IO (Ptr PgQueryParseResult)
 
