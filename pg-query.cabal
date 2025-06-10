@@ -1,10 +1,10 @@
-cabal-version: >=1.22
+cabal-version: 3.0
 name: pg-query
 version: 0.1.0.0
 synopsis: Haskell bindings to libpg_query
 description: FFI bindings for Haskell to libpg_query
 bug-reports: https://github.com/heb/pg-query
-license: BSD3
+license: BSD-3-Clause
 license-file: LICENSE
 author: David Johnson
 maintainer: code@dmj.io
