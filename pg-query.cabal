@@ -29,7 +29,7 @@ executable example
     aeson-pretty,
     base <5,
     bytestring,
-    pg-query
+    pg-query,
 
   hs-source-dirs:
     exe
@@ -38,6 +38,9 @@ executable example
     Haskell2010
 
 library pg-query-internal
+  visibility:
+    public
+
   exposed-modules:
     Postgres.Query.Parse
 
@@ -73,7 +76,7 @@ library
     Postgres.Query.Parse
 
   build-depends:
-    pg-query-internal
+    pg-query:pg-query-internal
 
 source-repository head
   type: git
